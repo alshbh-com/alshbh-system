@@ -172,6 +172,109 @@ export type Database = {
         }
         Relationships: []
       }
+      services: {
+        Row: {
+          cost: number | null
+          created_at: string
+          credentials: string | null
+          expire_date: string | null
+          id: string
+          name: string
+          notes: string | null
+          project_id: string | null
+          provider: string | null
+          type: string
+          updated_at: string
+          url: string | null
+          user_id: string
+        }
+        Insert: {
+          cost?: number | null
+          created_at?: string
+          credentials?: string | null
+          expire_date?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          project_id?: string | null
+          provider?: string | null
+          type?: string
+          updated_at?: string
+          url?: string | null
+          user_id: string
+        }
+        Update: {
+          cost?: number | null
+          created_at?: string
+          credentials?: string | null
+          expire_date?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          project_id?: string | null
+          provider?: string | null
+          type?: string
+          updated_at?: string
+          url?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "services_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tasks: {
+        Row: {
+          created_at: string
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string
+          project_id: string | null
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          project_id?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          project_id?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       transactions: {
         Row: {
           amount: number
