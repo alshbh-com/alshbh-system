@@ -67,8 +67,8 @@ export default function Dashboard() {
   const cards = [
     { label: "المشاريع", value: stats.totalProjects, sub: `${stats.activeProjects} نشط`, icon: FolderKanban, color: "text-neon-cyan", bg: "bg-neon-cyan/10", path: "/projects" },
     { label: "العملاء", value: stats.totalClients, icon: Users, color: "text-neon-violet", bg: "bg-neon-violet/10", path: "/clients" },
-    { label: "الدخل", value: `${stats.totalIncome.toLocaleString()} ر.س`, icon: TrendingUp, color: "text-neon-green", bg: "bg-neon-green/10", path: "/finance" },
-    { label: "الأرباح", value: `${(stats.totalIncome - stats.totalExpense).toLocaleString()} ر.س`, icon: Wallet, color: "text-neon-orange", bg: "bg-neon-orange/10", path: "/finance" },
+    { label: "الدخل", value: `${stats.totalIncome.toLocaleString()} ج.م`, icon: TrendingUp, color: "text-neon-green", bg: "bg-neon-green/10", path: "/finance" },
+    { label: "الأرباح", value: `${(stats.totalIncome - stats.totalExpense).toLocaleString()} ج.م`, icon: Wallet, color: "text-neon-orange", bg: "bg-neon-orange/10", path: "/finance" },
     { label: "المهام المعلقة", value: stats.pendingTasks, icon: ListTodo, color: "text-neon-pink", bg: "bg-neon-pink/10", path: "/tasks" },
     { label: "الخدمات", value: stats.expiringServices > 0 ? `${stats.expiringServices} تنبيه` : "جيد", icon: Server, color: stats.expiringServices > 0 ? "text-destructive" : "text-neon-green", bg: stats.expiringServices > 0 ? "bg-destructive/10" : "bg-neon-green/10", path: "/services" },
   ];
