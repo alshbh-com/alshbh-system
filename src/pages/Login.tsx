@@ -4,11 +4,12 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Lock, Mail, Eye, EyeOff, Zap } from "lucide-react";
+import { Lock, Eye, EyeOff, Zap } from "lucide-react";
+
+const ADMIN_EMAIL = "admin@alshbh.com";
 
 export default function Login() {
   const { user, loading, signIn } = useAuth();
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -28,8 +29,8 @@ export default function Login() {
     e.preventDefault();
     setError("");
     setSubmitting(true);
-    const { error } = await signIn(email, password);
-    if (error) setError("البريد أو كلمة المرور غير صحيحة");
+    const { error } = await signIn(ADMIN_EMAIL, password);
+    if (error) setError("كلمة المرور غير صحيحة");
     setSubmitting(false);
   };
 
@@ -53,45 +54,29 @@ export default function Login() {
               <Zap className="h-8 w-8 text-primary" />
             </motion.div>
             <h1 className="text-2xl font-bold neon-text text-primary">System Alshbh</h1>
-            <p className="text-muted-foreground text-sm">نظام إدارة الأعمال</p>
+            <p className="text-muted-foreground text-sm">أدخل كلمة المرور للدخول</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <div className="relative">
-                <Mail className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="email"
-                  placeholder="البريد الإلكتروني"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="pr-10 bg-muted/50 border-border/50 focus:border-primary/50 text-right"
-                  required
-                  dir="ltr"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="relative">
-                <Lock className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="كلمة المرور"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pr-10 pl-10 bg-muted/50 border-border/50 focus:border-primary/50 text-right"
-                  required
-                  dir="ltr"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute left-3 top-3 text-muted-foreground hover:text-foreground"
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </button>
-              </div>
+            <div className="relative">
+              <Lock className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Input
+                type={showPassword ? "text" : "password"}
+                placeholder="كلمة المرور"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pr-10 pl-10 bg-muted/50 border-border/50 focus:border-primary/50 text-right"
+                required
+                autoFocus
+                dir="ltr"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute left-3 top-3 text-muted-foreground hover:text-foreground"
+              >
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
             </div>
 
             {error && (
@@ -109,7 +94,7 @@ export default function Login() {
               className="w-full neon-glow font-semibold"
               disabled={submitting}
             >
-              {submitting ? "جاري الدخول..." : "تسجيل الدخول"}
+              {submitting ? "جاري الدخول..." : "دخول"}
             </Button>
           </form>
         </div>
