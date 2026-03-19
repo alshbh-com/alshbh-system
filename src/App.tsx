@@ -10,9 +10,12 @@ import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Clients from "./pages/Clients";
 import Finance from "./pages/Finance";
+import Services from "./pages/Services";
+import Tasks from "./pages/Tasks";
 import Security from "./pages/Security";
 import More from "./pages/More";
 import AddNew from "./pages/AddNew";
+import SettingsPage from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import AppLayout from "./components/layout/AppLayout";
 
@@ -38,7 +41,10 @@ const App = () => (
             <Route path="/projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
             <Route path="/clients" element={<ProtectedRoute><Clients /></ProtectedRoute>} />
             <Route path="/finance" element={<ProtectedRoute><Finance /></ProtectedRoute>} />
+            <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
+            <Route path="/tasks" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
             <Route path="/security" element={<ProtectedRoute><Security /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
             <Route path="/more" element={<ProtectedRoute><More /></ProtectedRoute>} />
             <Route path="/add" element={<ProtectedRoute><AddNew /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />

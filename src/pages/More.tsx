@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, Shield, Settings, LogOut, FolderKanban, Wallet } from "lucide-react";
+import { Users, Shield, Settings, LogOut, FolderKanban, Wallet, Server, ListTodo } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const menuItems = [
   { icon: FolderKanban, label: "المشاريع", path: "/projects", color: "text-neon-cyan" },
   { icon: Users, label: "العملاء", path: "/clients", color: "text-neon-violet" },
   { icon: Wallet, label: "المالية", path: "/finance", color: "text-neon-green" },
-  { icon: Shield, label: "سجل الأمان", path: "/security", color: "text-neon-orange" },
+  { icon: Server, label: "الخدمات", path: "/services", color: "text-neon-orange" },
+  { icon: ListTodo, label: "المهام", path: "/tasks", color: "text-neon-pink" },
+  { icon: Shield, label: "سجل الأمان", path: "/security", color: "text-neon-cyan" },
   { icon: Settings, label: "الإعدادات", path: "/settings", color: "text-muted-foreground" },
 ];
 
@@ -18,7 +20,6 @@ export default function More() {
   return (
     <div className="space-y-4">
       <h1 className="text-xl font-bold">المزيد</h1>
-
       <div className="space-y-2">
         {menuItems.map((item, i) => (
           <motion.button
@@ -39,7 +40,7 @@ export default function More() {
         <motion.button
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.4 }}
           onClick={signOut}
           className="glass-card p-4 w-full flex items-center gap-3 text-right"
         >
